@@ -14,7 +14,7 @@ from datetime import datetime
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
-migrate = Migrate(app)
+
 
 app.config['SECRET_KEY'] = 'hard to guess string'
 
@@ -25,6 +25,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] =\
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 class Role(db.Model):
     __tablename__ = 'roles'
